@@ -12,6 +12,10 @@ function App() {
   const [valorButo, setValorBruto] = useState(0.0);
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [primeiraTela, setPrimeiraTela] = useState(true);
+  const [segundaTela, setSegundaTela] = useState(false);
+  const [terceiraTela, setTerceiraTela] = useState(false);
+  const [quartaTela, setQuartaTela] = useState(false);
 
   const calculaSalarioINSS = () => {
     setValorBruto((Float(horas) * Float(valorHora)) * 5);
@@ -31,7 +35,9 @@ function App() {
 
   return (
     <AppContext.Provider value = {
-      { nome, setNome, telefone, setTelefone, valorButo, setValorBruto, valorINSS, setValorINSS, valorHora, setValorHora, horas, setHoras, calculaSalarioINSS }
+      { nome, setNome, telefone, setTelefone, valorButo, setValorBruto, valorINSS, setValorINSS, valorHora, setValorHora, horas, setHoras, calculaSalarioINSS,
+        primeiraTela, setPrimeiraTela, segundaTela, setSegundaTela, terceiraTela, setTerceiraTela, quartaTela, setQuartaTela
+       }
     }>
       <DadosPessoais/>
       <Calculo />

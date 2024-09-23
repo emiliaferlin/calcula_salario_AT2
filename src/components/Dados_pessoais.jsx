@@ -17,7 +17,7 @@ function Calculo() {
                 <input type="text" value={telefone}
                     onChange={e => setTelefone(e.target.value)} />
             </div>   
-            <button onClick={()=> calculaMedia()}>Calcular</button>         
+            <button onClick={()=> calculaMedia()}>Próximo</button>         
         </>
     )
 }
