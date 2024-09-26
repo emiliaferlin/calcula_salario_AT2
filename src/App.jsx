@@ -37,7 +37,7 @@ function App() {
       setValorINSS(valorBrutoCalculado * 0.14);
     }
 
-    setValorLiquido(valorBruto - valorINSS);
+    setValorLiquido(valorBrutoCalculado - valorINSS);
     setTelaAtiva(4);
   };
 
