@@ -7,7 +7,7 @@ function Tabela() {
 
   return (
     <>
-      <div>
+      <div className="resultado-container">
         <p>Nome: {nome}</p>
         <p>Telefone: {telefone}</p>
         <p>Valor Bruto: {valorBruto}</p>

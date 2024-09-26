@@ -3,6 +3,7 @@ import AppContext from "./AppContext";
 import Tabela from "./components/Resultado";
 import Calculo from "./components/Calculo";
 import DadosPessoais from "./components/Dados_pessoais";
+import "./App.css";
 
 function App() {
   const [horas, setHoras] = useState(0);
@@ -45,8 +46,10 @@ function App() {
       case 1:
         return (
           <>
-            <div>
-              <button onClick={() => proximaTela()}>Começar</button>
+            <div className="view">
+              <button className="calcular-button" onClick={() => proximaTela()}>
+                Começar
+              </button>
             </div>
           </>
         );
@@ -91,12 +94,20 @@ function App() {
       }}
     >
       <div className="view">
+        <h1>Calcular salário</h1>
         {renderizarTela()}
       </div>
       {telaAtiva > 1 ? (
-        <div>
-          <button onClick={() => voltarTela()}>Voltar</button>
-        {telaAtiva > 2 ? null : <button onClick={() => proximaTela()}>Próximo</button>}
+        <div className="view">
+          <button className="todos-button" onClick={() => voltarTela()}>
+            Voltar
+          </button>
+          <div className="view_espaco"></div>
+          {telaAtiva > 2 ? null : (
+            <button className="todos-button" onClick={() => proximaTela()}>
+              Próximo
+            </button>
+          )}
         </div>
       ) : null}
     </AppContext.Provider>

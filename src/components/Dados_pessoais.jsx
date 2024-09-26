@@ -6,7 +6,7 @@ function Calculo() {
 
   return (
     <>
-      <div>
+      <div className="dados-container">
         <label>Nome: </label>
         <input
           type="text"
@@ -14,7 +14,7 @@ function Calculo() {
           onChange={(e) => setNome(e.target.value)}
         />
       </div>
-      <div>
+      <div className="dados-container">
         <label>Telefone: </label>
         <input
           type="text"

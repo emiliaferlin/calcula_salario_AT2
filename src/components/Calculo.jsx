@@ -7,7 +7,7 @@ function Calculo() {
 
   return (
     <>
-      <div>
+      <div className="calculo-container">
         <label>Horas trabalhadas: </label>
         <input
           type="number"
@@ -15,7 +15,7 @@ function Calculo() {
           onChange={(e) => setHoras(e.target.value)}
         />
       </div>
-      <div>
+      <div className="calculo-container">
         <label>Valor Hora: </label>
         <input
           type="number"
@@ -23,7 +23,8 @@ function Calculo() {
           onChange={(e) => setValorHora(e.target.value)}
         />
       </div>
-      <button onClick={() => calculaSalarioINSS()}>Calcular e Finalizar</button>
+      <div className="view_espaco"></div>
+      <button className="calcular-button" onClick={() => calculaSalarioINSS()}>Calcular e Finalizar</button>
     </>
   );
 }
