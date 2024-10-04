@@ -1,9 +1,16 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AppContext from "../AppContext";
 
 function Calculo() {
   const { horas, valorHora, setHoras, setValorHora, calculaSalarioINSS } =
     useContext(AppContext);
+  const navigate = useNavigate();
+
+  const handleCalcular = () => {
+    calculaSalarioINSS();
+    navigate("/privado/resultado");
+  };
 
   return (
     <>
@@ -23,8 +30,11 @@ function Calculo() {
           onChange={(e) => setValorHora(e.target.value)}
         />
       </div>
-      <div className="view_espaco"></div>
-      <button className="calcular-button" onClick={() => calculaSalarioINSS()}>Calcular e Finalizar</button>
+      <div className="calculo-container">
+        <button className="calcular-button" onClick={handleCalcular}>
+          Calcular e Finalizar
+        </button>
+      </div>
     </>
   );
 }

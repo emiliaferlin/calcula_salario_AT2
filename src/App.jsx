@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppContext from "./AppContext";
-import Tabela from "./components/Resultado";
+import Resultado from "./components/Resultado";
 import Calculo from "./components/Calculo";
-import DadosPessoais from "./components/Dados_pessoais";
+import Home from "./components/Home";
+import MenuPrivado from "./components/MenuPrivado";
+import MenuPublico from "./components/MenuPublico";
+import Login from "./components/Login";
 import "./App.css";
 
 function App() {
@@ -11,9 +15,9 @@ function App() {
   const [valorINSS, setValorINSS] = useState(0.0);
   const [valorBruto, setValorBruto] = useState(0.0);
   const [valorLiquido, setValorLiquido] = useState(0.0);
-  const [nome, setNome] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [telaAtiva, setTelaAtiva] = useState(1);
+  const [nome, setNome] = useState(localStorage.getItem("nome") || "");
+  const [telefone, setTelefone] = useState(localStorage.getItem("telefone") || "");
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("nome"));
 
   const calculaSalarioINSS = () => {
     const valorBrutoCalculado = horas * valorHora * 5;
@@ -38,40 +42,42 @@ function App() {
     }
 
     setValorLiquido(valorBrutoCalculado - valorINSS);
-    setTelaAtiva(4);
   };
 
-  const renderizarTela = () => {
-    switch (telaAtiva) {
-      case 1:
-        return (
-          <>
-            <div className="view">
-              <button className="calcular-button" onClick={() => proximaTela()}>
-                Começar
-              </button>
-            </div>
-          </>
-        );
-
-      case 2:
-        return <DadosPessoais />;
-      case 3:
-        return <Calculo />;
-      case 4:
-        return <Tabela />;
-      default:
-        return <DadosPessoais />;
-    }
-  };
-
-  const proximaTela = () => {
-    setTelaAtiva((prevTela) => (prevTela < 4 ? prevTela + 1 : 4));
-  };
-
-  const voltarTela = () => {
-    setTelaAtiva((prevTela) => (prevTela > 1 ? prevTela - 1 : 1));
-  };
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MenuPublico />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+      ],
+    },
+    {
+      path: "/privado",
+      element: isAuthenticated ? <MenuPrivado /> : <Login />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "calculo",
+          element: <Calculo />,
+        },
+        {
+          path: "resultado",
+          element: <Resultado />,
+        },
+      ],
+    },
+  ]);
 
   return (
     <AppContext.Provider
@@ -91,25 +97,11 @@ function App() {
         valorLiquido,
         setValorLiquido,
         calculaSalarioINSS,
+        isAuthenticated,
+        setIsAuthenticated,
       }}
     >
-      <div className="view">
-        <h1>Calcular salário</h1>
-        {renderizarTela()}
-      </div>
-      {telaAtiva > 1 ? (
-        <div className="view">
-          <button className="todos-button" onClick={() => voltarTela()}>
-            Voltar
-          </button>
-          <div className="view_espaco"></div>
-          {telaAtiva > 2 ? null : (
-            <button className="todos-button" onClick={() => proximaTela()}>
-              Próximo
-            </button>
-          )}
-        </div>
-      ) : null}
+      <RouterProvider router={router} />
     </AppContext.Provider>
   );
 }

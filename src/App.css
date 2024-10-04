@@ -1,3 +1,4 @@
+
 .calculo-container {
   display: flex;
   flex-direction: column;
@@ -10,9 +11,10 @@
 .dados-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
 }
 
 .resultado-container {
@@ -20,8 +22,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 25px;
-  background-color: #f1f1f1;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
 .view {
@@ -29,17 +31,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 25px;
-  background-color: #f1f1f1;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-.view_espaco {
-  padding: 10px;
-}
 
 .todos-button {
   padding: 10px 20px;
-  background-color: #0d00ff;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;
@@ -54,6 +53,73 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+
+/* App.css */
+
+.navbar-custom {
+  background-color: #000000; /* Cor de fundo */
+  border-bottom: 2px solid #000000; /* Adiciona uma borda inferior */
+}
+
+.navbar-custom .navbar-brand {
+  color: white; /* Cor do texto da marca */
+  font-size: 1.5rem; /* Tamanho da fonte */
+  font-weight: bold; /* Deixa o texto em negrito */
+}
+
+.navbar-custom .nav-link {
+  color: white !important; /* Cor do texto dos links */
+  font-size: 1.2rem; /* Tamanho dos links */
+  margin-right: 15px; /* Espaçamento entre os links */
+}
+
+.navbar-custom .nav-link:hover {
+  color: #FFD700 !important; /* Cor do link quando o cursor passa por cima */
+}
+
+.navbar-toggler {
+  border-color: white; /* Cor do botão de alternância no modo mobile */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  /* Faz com que o ícone do menu seja branco */
+}
+
+/* App.css */
+
+/* Estiliza a Navbar pública */
+.navbar-public {
+  background-color: #000000; /* Cor de fundo escura */
+  border-bottom: 2px solid #1ABC9C; /* Borda inferior com cor de destaque */
+}
+
+.navbar-public .navbar-brand {
+  color: white; /* Cor do texto da marca */
+  font-size: 1.5rem; /* Tamanho da fonte da marca */
+  font-weight: bold; /* Texto em negrito */
+}
+
+.navbar-public .nav-link {
+  color: white !important; /* Cor dos links */
+  font-size: 1.2rem; /* Tamanho da fonte dos links */
+  margin-right: 15px; /* Espaçamento entre os links */
+}
+
+.navbar-public .nav-link:hover {
+  color: #000000 !important; /* Cor dos links ao passar o mouse */
+}
+
+.navbar-toggler {
+  border-color: white; /* Cor do botão de alternância no modo mobile */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  /* Ícone do menu na cor branca */
+}
+
 
 
 

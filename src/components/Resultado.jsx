@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AppContext from "../AppContext";
 
-function Tabela() {
+function Resultado() {
   const { valorINSS, valorBruto, nome, telefone, valorLiquido } =
     useContext(AppContext);
 
@@ -18,4 +18,4 @@ function Tabela() {
   );
 }
 
-export default Tabela;
+export default Resultado;
